@@ -33,6 +33,7 @@ namespace MathChallenge
                 //validates that user entered integers
                 if (int.TryParse(num1 + num2, out int number))
                 {
+                    //call CompareSum method
                     Console.WriteLine("Your numbers are: {0} and {1}", num1, num2);
                 }
                 else
@@ -53,7 +54,7 @@ namespace MathChallenge
 
         }
         
-        private static void Comparesum(int num)
+        private static void CompareSum(int num)
         {
             //store digits in variables
             //get sums of all digit pairs
@@ -67,7 +68,6 @@ namespace MathChallenge
             //if sum1 != sum2 then cw"False" (it doesn't matter if there are more digits to check)   
 
         }
-
 
     }
 }
