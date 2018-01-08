@@ -16,22 +16,24 @@ namespace MathChallenge
             while (runprogram)
             {
                 Console.WriteLine("Please enter a number");
-                var input1 = Console.ReadLine();
-                int input1digits = input1.ToString().Length;
+                var num1 = Console.ReadLine();
+                int num1digits = num1.ToString().Length;
 
                 Console.WriteLine("Please enter a second number with the same number of digits");
-                var input2 = Console.ReadLine();
-                int input2digits = input2.ToString().Length;
+                var num2 = Console.ReadLine();
+                int num2digits = num2.ToString().Length;
 
-                if (input1digits != input2digits)
+                if (num1digits != num2digits)
                 {
                     Console.WriteLine("Please try again. Make sure each number has the same amount of digits.");
                 }
 
+                
+
                 //validates that user entered integers
-                if (int.TryParse(input1 + input2, out int number1))
+                if (int.TryParse(num1 + num2, out int number))
                 {
-                    Console.WriteLine("Your numbers are: {0} and {1}", input1, input2);
+                    Console.WriteLine("Your numbers are: {0} and {1}", num1, num2);
                 }
                 else
                 {
@@ -50,13 +52,22 @@ namespace MathChallenge
             }
 
         }
-        /*
-        private static int Calculate(int num)
+        
+        private static void Comparesum(int num)
         {
-            //Write: method for getting digits from integer, calculating sum, and comparing 
+            //store digits in variables
+            //get sums of all digit pairs
+                //get sum1 of digit1 of num1 and digit1 of num2
+                //get sum2 of digit2 of num2 and digit2 of num2 
+            //compare sum1 with all digit sums they are all true, or until one sum comparison is false
+            //if sum1 == all the digit sums then cw"True", else cw"false"
+
+            //if sum1 == sum2 then check if there are more digits to add, if yes then get the  if not then cw "True" 
+            
+            //if sum1 != sum2 then cw"False" (it doesn't matter if there are more digits to check)   
 
         }
-        */
+
 
     }
 }
