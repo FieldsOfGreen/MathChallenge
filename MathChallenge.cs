@@ -12,29 +12,29 @@ namespace MathChallenge
         static int num1, num2, num1digits, num2digits;
 
         public static void Main(string[] args)
-        {                       
+        {
             while (runapp)
-            {                
+            {
                 while (getuserinput)
-                {                    
+                {
                     //***Get first number from user***
                     while (getfirstnumber)
                     {
-                        Console.WriteLine("Please enter a first number.");                        
-                        string number1string = Console.ReadLine(); 
-                        
+                        Console.WriteLine("Please enter a first number.");
+                        string number1string = Console.ReadLine();
+
                         if (int.TryParse(number1string, out num1))
                         {
                             Console.Clear();
-                            getfirstnumber = false;                            
+                            getfirstnumber = false;
                         }
                         else
                         {
-                            Console.WriteLine("Oops. You entered {0}.", number1string);                            
+                            Console.WriteLine("Oops. You entered {0}.", number1string);
                             Console.WriteLine("");
                             Console.WriteLine("Make sure you enter a whole number. Please try again.");
                             Console.WriteLine("");
-                        }                        
+                        }
                     }
                     //***Get second number from user***
                     while (getsecondnumber)
@@ -68,30 +68,20 @@ namespace MathChallenge
                             Console.WriteLine("You entered {0} and {1}.", num1, number2string);
                             Console.WriteLine("Make sure you enter a whole number. Please try again.");
                             Console.WriteLine("");
-                        }                        
+                        }
                     }
-                    //***Call calculateinput method***
-                    Console.WriteLine("Congrats you've verified user input and accounted for possible errors.");
-                    getfirstnumber = true;
-                    getsecondnumber = true;
+                    //***Call CompareSum method***
+                    Console.WriteLine("Congrats you've verified user input.");
+                    CompareSum(num1, num2, num1digits, num2digits);
+                    // getfirstnumber = true;
+                    //getsecondnumber = true;
                     Console.ReadKey();
-
                 }
-
-                    
-                
             }
-            
-
-            
-
-
         }
-        /*
         private static void CompareSum(int num1, int num2, int num1digits, int num2digits)
         {
-            //each digit in variable via array
-            //array for number1 and array for number2
+            //***Arrays of the digits for each number entered by user***            
             int[] number1array = new int[num1digits];
             for (int index = 0; index < num1digits; index++)
             {
@@ -99,28 +89,26 @@ namespace MathChallenge
                 num1 /= 10;
             }
 
-            //Should be putting into array to compare digits?
-            //sum of all digits in input
+            int[] number2array = new int[num2digits];
+            for (int index = 0; index < num2digits; index++)
+            {
+                number2array[index] = num2 % 10;
+                num2 /= 10;
+            }
 
+            //***Add all the digit pairs together***                       
 
-            //num1,num2 greater than 0 because you have to divide them by 10 each time throught the loop until all the digits in num1 and num2 have been added to the sum
+            //***Compare all sums*** sum1 with all digit sums until one sum comparison is false
 
-
-            Console.WriteLine();
-            //store digits in variables
-            //get sums of all digit pairs
-            //get sum1 of digit1 of num1 and digit1 of num2
-            //get sum2 of digit2 of num2 and digit2 of num2 
-            //compare sum1 with all digit sums they are all true, or until one sum comparison is false
             //if sum1 == all the digit sums then cw"True", else cw"false"
 
             //if sum1 == sum2 then check if there are more digits to add, if yes then get the  if not then cw "True" 
 
             //if sum1 != sum2 then cw"False" (it doesn't matter if there are more digits to check)   
-            
+
 
         }
-        */
+
 
     }
 }
