@@ -8,81 +8,83 @@ namespace MathChallenge
 {
     class Program
     {
+        static bool getuserinput = true, getfirstnumber = true, getsecondnumber = true, runapp = true, calculateinput = true;
+        static int num1, num2, num1digits, num2digits;
+
         public static void Main(string[] args)
-        {
-            bool runprogram = true;
-            char doagain;
-
-            while (runprogram)
-            {
-                //get first number
-                Console.WriteLine("Please enter a number");
-                string number1string = Console.ReadLine();
-                int num1;                
-                if (int.TryParse(number1string, out num1)) ;
-                else
-                {
-                    Console.WriteLine("Please try again");
-                    Console.ReadKey();
-                    runprogram = false;
-                }
-                int num1digits = num1.ToString().Length;
-
-                //get second number
-                Console.WriteLine("Please enter a number");
-                string number2string = Console.ReadLine();
-                int num2;
-                if (int.TryParse(number2string, out num2)) ;
-                else
-                {
-                    Console.WriteLine("Please try again");
-                    Console.ReadKey();
-                    runprogram = false;
-                }
-                int num2digits = num2.ToString().Length;
-
-
-
-                /*Convert.ToInt32(Console.ReadLine());
-                int num1digits = num1.ToString().Length;
-                //get second number
-                Console.WriteLine("Please enter a second number with the same number of digits");
-                int num2 = Convert.ToInt32(Console.ReadLine());
-                int num2digits = num2.ToString().Length;
-                //verifies number2 is same amount of digits as number1
-                if (num1digits != num2digits)
-                {
-                    Console.WriteLine("Please try again. Make sure each number has the same amount of digits.");
-                    Console.WriteLine("Would you like to run this program again? (Y or N)");
-                    //Error: if user enters anything but a single character AND it will still print the number of digits if you try running again.
-                    doagain = Convert.ToChar(Console.ReadLine());
-                    if (doagain != 'y' && doagain != 'Y')
+        {                       
+            while (runapp)
+            {                
+                while (getuserinput)
+                {                    
+                    //***Get first number from user***
+                    while (getfirstnumber)
                     {
-                        runprogram = false;
+                        Console.WriteLine("Please enter a first number.");                        
+                        string number1string = Console.ReadLine(); 
+                        
+                        if (int.TryParse(number1string, out num1))
+                        {
+                            Console.Clear();
+                            getfirstnumber = false;                            
+                        }
+                        else
+                        {
+                            Console.WriteLine("Oops. You entered {0}.", number1string);                            
+                            Console.WriteLine("");
+                            Console.WriteLine("Make sure you enter a whole number. Please try again.");
+                            Console.WriteLine("");
+                        }                        
                     }
+                    //***Get second number from user***
+                    while (getsecondnumber)
+                    {
+                        Console.WriteLine("Your first number is: " + num1);
+                        Console.WriteLine("");
+                        Console.WriteLine("Please enter a second number.");
+                        Console.WriteLine("Make sure the number you enter has the same amount of digits as the first number.");
+                        string number2string = Console.ReadLine();
+
+                        if (int.TryParse(number2string, out num2))
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Your numbers are {0} and {1}.", num1, num2);
+                            num1digits = num1.ToString().Length;
+                            num2digits = num2.ToString().Length;
+                            Console.WriteLine("");
+                            if (num1digits != num2digits)
+                            {
+                                Console.WriteLine("Uh oh! It looks like the amount of digits in the numbers you entered don't match. Please try again.");
+                                Console.WriteLine("");
+                            }
+                            else
+                            {
+                                getsecondnumber = false;
+                            }
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("You entered {0} and {1}.", num1, number2string);
+                            Console.WriteLine("Make sure you enter a whole number. Please try again.");
+                            Console.WriteLine("");
+                        }                        
+                    }
+                    //***Call calculateinput method***
+                    Console.WriteLine("Congrats you've verified user input and accounted for possible errors.");
+                    getfirstnumber = true;
+                    getsecondnumber = true;
+                    Console.ReadKey();
+
                 }
 
-                //If user did enter valid integers then execute this block
-                if (int.TryParse(num1.ToString(), out int number))
-                {
                     
-
-                }
-                else
-                {
-                    Console.WriteLine("Some input was entered incorrectly. Please try again.");
-                }
-
-                //Allows user to run program again
-                Console.WriteLine("Would you like to run this program again? (Y or N)");
-                //Error: if user enters anything but a single character. 
-                doagain = Convert.ToChar(Console.ReadLine());
-                if (doagain != 'y' && doagain != 'Y')
-                {
-                    runprogram = false;
-                }
-                */
+                
             }
+            
+
+            
+
 
         }
         /*
@@ -97,10 +99,7 @@ namespace MathChallenge
                 num1 /= 10;
             }
 
-
-
-
-            //WAIT i've been doing this wrong... should be putting into array to compare digits...
+            //Should be putting into array to compare digits?
             //sum of all digits in input
 
 
