@@ -73,6 +73,7 @@ namespace MathChallenge
                     //***Call CompareSum method***
                     Console.WriteLine("Congrats you've verified user input.");
                     CompareSum(num1, num2, num1digits, num2digits);
+                    
                     // getfirstnumber = true;
                     //getsecondnumber = true;
                     Console.ReadKey();
@@ -86,16 +87,22 @@ namespace MathChallenge
             for (int index = 0; index < num1digits; index++)
             {
                 number1array[index] = num1 % 10;
-                num1 /= 10;
+                num1 = num1 / 10;
+                              
             }
+
+            Array.Reverse(number1array);
+            Console.Write(number1array[index] + " ");
 
             int[] number2array = new int[num2digits];
             for (int index = 0; index < num2digits; index++)
             {
                 number2array[index] = num2 % 10;
-                num2 /= 10;
-            }
-
+                num2 = num2 / 10;
+                Array.Reverse(number2array);
+                Console.Write(number2array[index] + " ");               
+            }         
+            
             //***Add all the digit pairs together***                       
 
             //***Compare all sums*** sum1 with all digit sums until one sum comparison is false
