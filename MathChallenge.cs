@@ -8,17 +8,17 @@ namespace MathChallenge
 {
     class Program
     {
-        static bool getuserinput = true, getfirstnumber = true, getsecondnumber = true, runapp = true, calculateinput = true;
+        static bool getUserInput = true, getFirstNumber = true, getSecondNumber = true, runApp = true;
         static int num1, num2, num1digits, num2digits;
 
         public static void Main(string[] args)
         {
-            while (runapp)
+            while (runApp)
             {
-                while (getuserinput)
+                while (getUserInput)
                 {
                     //***Get first number from user***
-                    while (getfirstnumber)
+                    while (getFirstNumber)
                     {
                         Console.WriteLine("Please enter a first number.");
                         string number1string = Console.ReadLine();
@@ -26,7 +26,7 @@ namespace MathChallenge
                         if (int.TryParse(number1string, out num1))
                         {
                             Console.Clear();
-                            getfirstnumber = false;
+                            getFirstNumber = false;
                         }
                         else
                         {
@@ -37,7 +37,7 @@ namespace MathChallenge
                         }
                     }
                     //***Get second number from user***
-                    while (getsecondnumber)
+                    while (getSecondNumber)
                     {
                         Console.WriteLine("Your first number is: " + num1);
                         Console.WriteLine("");
@@ -59,7 +59,7 @@ namespace MathChallenge
                             }
                             else
                             {
-                                getsecondnumber = false;
+                                getSecondNumber = false;
                             }
                         }
                         else
@@ -87,21 +87,15 @@ namespace MathChallenge
             for (int index = 0; index < num1digits; index++)
             {
                 number1array[index] = num1 % 10;
-                num1 = num1 / 10;
-                              
-            }
-
-            Array.Reverse(number1array);
-            Console.Write(number1array[index] + " ");
-
+                num1 = num1 / 10;               
+            }                       
+           
             int[] number2array = new int[num2digits];
             for (int index = 0; index < num2digits; index++)
             {
                 number2array[index] = num2 % 10;
-                num2 = num2 / 10;
-                Array.Reverse(number2array);
-                Console.Write(number2array[index] + " ");               
-            }         
+                num2 = num2 / 10;                                      
+            }                   
             
             //***Add all the digit pairs together***                       
 
@@ -109,7 +103,7 @@ namespace MathChallenge
 
             //if sum1 == all the digit sums then cw"True", else cw"false"
 
-            //if sum1 == sum2 then check if there are more digits to add, if yes then get the  if not then cw "True" 
+            //if sum1 == sum2 then check if there are more digits to add, if yes then get the if not then cw "True" 
 
             //if sum1 != sum2 then cw"False" (it doesn't matter if there are more digits to check)   
 
