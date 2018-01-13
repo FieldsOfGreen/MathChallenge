@@ -8,8 +8,13 @@ namespace MathChallenge
 {
     class Program
     {
-        static bool getUserInput = true, getFirstNumber = true, getSecondNumber = true, runApp = true;
+        static bool getUserInput = true, getFirstNumber = true, getSecondNumber = true, runApp = true, valuesAreEqual = false, repeatProg = true;
         static int num1, num2, num1digits, num2digits;
+        //string variables of the user inputs
+        static string number1string, number2string;
+
+        //static char[] Number1array = new char[number1string];
+        //static char[] Number2array = number2string.ToCharArray();
 
         public static void Main(string[] args)
         {
@@ -21,7 +26,7 @@ namespace MathChallenge
                     while (getFirstNumber)
                     {
                         Console.WriteLine("Please enter a first number.");
-                        string number1string = Console.ReadLine();
+                        number1string = Console.ReadLine();
 
                         if (int.TryParse(number1string, out num1))
                         {
@@ -43,7 +48,7 @@ namespace MathChallenge
                         Console.WriteLine("");
                         Console.WriteLine("Please enter a second number.");
                         Console.WriteLine("Make sure the number you enter has the same amount of digits as the first number.");
-                        string number2string = Console.ReadLine();
+                        number2string = Console.ReadLine();
 
                         if (int.TryParse(number2string, out num2))
                         {
@@ -70,50 +75,54 @@ namespace MathChallenge
                             Console.WriteLine("");
                         }
                     }
-                    //***Call CompareSum method***
-                    Console.WriteLine("Congrats you've verified user input.");
-                    CompareSum(num1, num2, num1digits, num2digits);
-                    
-                    // getfirstnumber = true;
-                    //getsecondnumber = true;
+                    //***Call CompareSum method***                     
+                    Program CompareCall = new Program();
+                    CompareCall.CompareSum(num1, num2);
                     Console.ReadKey();
                 }
             }
         }
-        private static void CompareSum(int num1, int num2, int num1digits, int num2digits)
+        public void CompareSum(int num1, int num2)
         {
-            //***Arrays of the digits for each number entered by user***            
-            int[] number1array = new int[num1digits];
-            for (int index = 0; index < num1digits; index++)
+            //***Arrays of the digits for each number entered by user***  
+            char[] number1array = number1string.ToCharArray();
+            for (int i = 0; i < number1string.Length; i++)
             {
-                number1array[index] = num1 % 10;
-                num1 = num1 / 10;               
-            }                       
-           
-            int[] number2array = new int[num2digits];
-            for (int index = 0; index < num2digits; index++)
+                Char.GetNumericValue(number1array[i]);
+                //Console.WriteLine(number1array[i]);
+            }
+
+            char[] number2array = number2string.ToCharArray();
+            for (int i = 0; i < number2string.Length; i++)
             {
-                number2array[index] = num2 % 10;
-                num2 = num2 / 10;                                      
-            }                   
-            
-            //***Add all the digit pairs together***                       
+                Char.GetNumericValue(number2array[i]);
+                //Console.WriteLine(number2array[i]);
+            }
 
-            //***Compare all sums*** sum1 with all digit sums until one sum comparison is false
+            //***Array of the sum of the first two arrays***            
+            int[] number3array = new int[number1string.Length];
+            for (int i = 0; i < number1string.Length; i++)
+            {
+                number3array[i] = number1array[i] + number2array[i];
+                //***Check if all values in number3array are equal
+                if (i <= i)
+                {
+                    valuesAreEqual = number3array[0].Equals(number3array[i]);
+                    if (!valuesAreEqual)
+                    {
+                        Console.WriteLine("False");
+                        return;
+                    }
+                }
 
-            //if sum1 == all the digit sums then cw"True", else cw"false"
+            }
+            Console.WriteLine("True");
 
-            //if sum1 == sum2 then check if there are more digits to add, if yes then get the if not then cw "True" 
-
-            //if sum1 != sum2 then cw"False" (it doesn't matter if there are more digits to check)   
-
+            //***Steps I took***
+            //put each number entered by user into an array. - DONE
+            //create third array which is the sum of the first two arrays. - DONE
+            //for each index in the third array if values are not equal then print false. - DONE, whoohoo!
 
         }
-
-
     }
 }
-
-
-
-
