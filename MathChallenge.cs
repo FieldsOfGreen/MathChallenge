@@ -9,12 +9,9 @@ namespace MathChallenge
     class Program
     {
         static bool getUserInput = true, getFirstNumber = true, getSecondNumber = true, runApp = true, valuesAreEqual = false, repeatProg = true;
+        const int maxLength = 3;
         static int num1, num2, num1digits, num2digits;
-        //string variables of the user inputs
         static string number1string, number2string;
-
-        //static char[] Number1array = new char[number1string];
-        //static char[] Number2array = number2string.ToCharArray();
 
         public static void Main(string[] args)
         {
@@ -27,18 +24,18 @@ namespace MathChallenge
                     {
                         Console.WriteLine("Please enter a first number.");
                         number1string = Console.ReadLine();
+                        num1digits = number1string.Length;
 
-                        if (int.TryParse(number1string, out num1))
+                        if ((int.TryParse(number1string, out num1)) && num1>0 && num1digits <= maxLength)
                         {
                             Console.Clear();
                             getFirstNumber = false;
                         }
                         else
                         {
-                            Console.WriteLine("Oops. You entered {0}.", number1string);
-                            Console.WriteLine("");
-                            Console.WriteLine("Make sure you enter a whole number. Please try again.");
-                            Console.WriteLine("");
+                            Console.Clear();
+                            Console.WriteLine("Oops. You entered {0}.", number1string);                            
+                            Console.WriteLine("\nMake sure you enter a positive number which doesn't have more than 3 digits. Please try again.");                            
                         }
                     }
                     //***Get second number from user***
@@ -49,13 +46,12 @@ namespace MathChallenge
                         Console.WriteLine("Please enter a second number.");
                         Console.WriteLine("Make sure the number you enter has the same amount of digits as the first number.");
                         number2string = Console.ReadLine();
+                        num2digits = number2string.Length;
 
-                        if (int.TryParse(number2string, out num2))
+                        if ((int.TryParse(number2string, out num2)) && num2>0 && num2digits <= maxLength)
                         {
                             Console.Clear();
-                            Console.WriteLine("Your numbers are {0} and {1}.", num1, num2);
-                            num1digits = num1.ToString().Length;
-                            num2digits = num2.ToString().Length;
+                            Console.WriteLine("Your numbers are {0} and {1}.", num1, num2);                            
                             Console.WriteLine("");
                             if (num1digits != num2digits)
                             {
@@ -76,13 +72,14 @@ namespace MathChallenge
                         }
                     }
                     //***Call CompareSum method***                     
-                    Program CompareCall = new Program();
-                    CompareCall.CompareSum(num1, num2);
+                    //Program CompareCall = new Program();
+                    //ompareCall.CompareSum(num1, num2);
+                    CompareSum(num1, num2);
                     Console.ReadKey();
                 }
             }
         }
-        public void CompareSum(int num1, int num2)
+        public static void CompareSum(int num1, int num2)
         {
             //***Arrays of the digits for each number entered by user***  
             char[] number1array = number1string.ToCharArray();
@@ -123,6 +120,6 @@ namespace MathChallenge
             //create third array which is the sum of the first two arrays. - DONE
             //for each index in the third array if values are not equal then print false. - DONE, whoohoo!
 
-        }
+        }        
     }
 }
